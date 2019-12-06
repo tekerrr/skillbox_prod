@@ -29,13 +29,13 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-        <a class="main-menu__item" href="../index.html">Главная</a>
+        <a class="main-menu__item" href="../index.php">Главная</a>
       </li>
       <li>
-        <a class="main-menu__item" href="orders.html">Заказы</a>
+        <a class="main-menu__item" href="orders.php">Заказы</a>
       </li>
       <li>
-        <a class="main-menu__item active" href="products.html">Товары</a>
+        <a class="main-menu__item active" href="products.php">Товары</a>
       </li>
       <li>
         <a class="main-menu__item" href="?login=out">Выйти</a>
@@ -45,7 +45,7 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
 </header>
 <main class="page-products">
   <h1 class="h h--1">Товары</h1>
-  <a class="page-products__button button" href="add.html">Добавить товар</a>
+  <a class="page-products__button button" href="add.php">Добавить товар</a>
   <div class="page-products__header">
     <span class="page-products__header-field">Название товара</span>
     <span class="page-products__header-field">ID</span>
@@ -74,16 +74,16 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="../index.html">Главная</a>
+          <a class="main-menu__item" href="../index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.html?new=1">Новинки</a>
+          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.html?sale=1">Sale</a>
+          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.html">Доставка</a>
+          <a class="main-menu__item" href="../delivery.php">Доставка</a>
         </li>
       </ul>
     </nav>
@@ -98,7 +98,7 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
     <span class="product-item__field" id="price">2 500 руб.</span>
     <span class="product-item__field" id="categories">Женщины</span>
     <span class="product-item__field" id="new_flag">Да</span>
-    <a href="add.html" class="product-item__edit" aria-label="Редактировать"></a>
+    <a href="add.php" class="product-item__edit" aria-label="Редактировать"></a>
     <button class="product-item__delete"></button>
   </li> 
 </template>

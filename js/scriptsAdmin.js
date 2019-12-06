@@ -64,7 +64,7 @@ const addError = (text) => {
 }
 
   ////////////////////////////
- // Авторизация index.html //
+ // Авторизация index.php //
 ////////////////////////////
 
   /////////////////////////
@@ -82,7 +82,7 @@ const login = () => {
       console.log(data);
       var result = JSON.parse(data);
       if (result.success) {
-        document.location.href = 'orders.html';
+        document.location.href = 'orders.php';
       } else {
         addError(result.error);
       }
@@ -105,7 +105,7 @@ if (authPage) {
 }
 
   ///////////////////////////////
- // Список заказов order.html //
+ // Список заказов order.php //
 ///////////////////////////////
 
   /////////////
@@ -127,7 +127,7 @@ const getMainMenuElement = (text, href) => {
 
 // Функция создания элемента "Товары" главного меню
 const createProductElemenetMenu = () => {
-  const element = getMainMenuElement('Товары', 'products.html');
+  const element = getMainMenuElement('Товары', 'products.php');
   var mainMenu = document.querySelector('.main-menu--header');
   mainMenu.insertBefore(element, mainMenu.children[2]);
 }
@@ -310,7 +310,7 @@ if (pageOrder) {
 }
 
   ////////////////////////////////////
- // Список продуктов products.html //
+ // Список продуктов products.php //
 ////////////////////////////////////
 
   /////////////
@@ -384,7 +384,7 @@ const getProductListElement = (product, template) => {
     changeElementById(card, element.name, element.text);
   });
 
-  card.querySelector('a').href = 'add.html?id=' + product.id;
+  card.querySelector('a').href = 'add.php?id=' + product.id;
   return card;
 }
 
@@ -519,7 +519,7 @@ if (pageProducts) {
 }
 
   //////////////////////////////////
- // добавление продукта add.html //
+ // добавление продукта add.php //
 //////////////////////////////////
 
   /////////////

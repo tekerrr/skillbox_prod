@@ -23,13 +23,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-        <a class="main-menu__item" href="index.html">Главная</a>
+        <a class="main-menu__item" href="index.php">Главная</a>
       </li>
       <li>
-        <a class="main-menu__item" href="index.html?new=1">Новинки</a>
+        <a class="main-menu__item" href="index.php?new=1">Новинки</a>
       </li>
       <li>
-        <a class="main-menu__item" href="index.html?sale=1">Sale</a>
+        <a class="main-menu__item" href="index.php?sale=1">Sale</a>
       </li>
       <li>
         <a class="main-menu__item active">Доставка</a>
@@ -74,7 +74,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
     <p class="page-delivery__desc">
       Мы свяжемся с вами, чтобы подтвердить дату и время доставки. Кроме того, вы будете получать уведомления по электронной почте и SMS с информацией о номере заказа, его стоимости, а также с информацией о том, что заказ готов к выдаче. В день доставки заказа мы отправим вам SMS-уведомлениес номером телефона сотрудника службы доставки.
     </p>
-    <a class="page-delivery__button button" href="index.html">Продолжить покупки</a>
+    <a class="page-delivery__button button" href="index.php">Продолжить покупки</a>
   </section>
 </main>
 <footer class="page-footer">
@@ -85,13 +85,13 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="index.html">Главная</a>
+          <a class="main-menu__item" href="index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="index.html?new=1">Новинки</a>
+          <a class="main-menu__item" href="index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="index.html?sale=1">Sale</a>
+          <a class="main-menu__item" href="index.php?sale=1">Sale</a>
         </li>
         <li>
           <a class="main-menu__item">Доставка</a>
