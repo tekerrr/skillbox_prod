@@ -334,10 +334,19 @@ function getOrderCost(int $id, bool $delivery = true) : float {
 	if (($result = mysqli_query(getConnection(), $query)) && ($row = mysqli_fetch_assoc($result))) {
 		$cost = $row['price'] ?? 0;
 		if ($delivery && $cost) {
-			$cost += $cost < DELIVERY_FREE_LIMIT ? DELIVERY_PRICE : 0;
+			$cost += getDeliveryCost($cost);
 		}
 	}
 	return $cost;
+}
+
+/**
+ * Функция получения цены доставки
+ * @param double $productPrice
+ * @return float
+ */
+function getDeliveryCost(float $productPrice) : float {
+	return $productPrice < DELIVERY_FREE_LIMIT ? DELIVERY_PRICE : 0;
 }
 
 /**

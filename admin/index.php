@@ -70,7 +70,6 @@
         <li>
           <a class="main-menu__item" href="/delivery.php">Доставка</a>
         </li>
-      </li>
       </ul>
     </nav>
     <address class="page-footer__copyright">
