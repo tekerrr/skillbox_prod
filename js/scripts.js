@@ -605,12 +605,31 @@ const handlerDelivery = (evt) => {
   }
 }
 
+// Обработчик для delivery EventListener
+const handlerDeliveryPrice = (price) => {
+  return () => {
+    price.isDelivery = !price.isDelivery;
+    setOrderPrice(price);
+  }
+}
+
+// Функция показа цены заказа
+const setOrderPrice = (price) => {
+  var deliveryPrice = price.isDelivery ? price.delivery : 0;
+
+  $('#order_product_price').text(price.product.toLocaleString('ru') + ' руб.');
+  $('#order_delivery_price').text(deliveryPrice.toLocaleString('ru') + ' руб.');
+  $('#order_price').text((price.product + deliveryPrice).toLocaleString('ru') + ' руб.');
+}
+
 // Функция переключателя способа доставки (radio-button)
-const toggleDelivery = (elem) => {
-  const delivery = elem.querySelector('.js-radio');
+const toggleDelivery = (price) => {
+  const delivery = document.querySelector('.js-radio');
 
   delivery.removeEventListener('change',handlerDelivery);
   delivery.addEventListener('change',handlerDelivery);
+  delivery.removeEventListener('change',handlerDeliveryPrice(price));
+  delivery.addEventListener('change',handlerDeliveryPrice(price));
 };
 
 // Обработчик для buttonEnd EventListener
@@ -658,6 +677,8 @@ const handlerSlopList = (evt) => {
     const prodIDForm = document.querySelector('#prodID');
     prodIDForm.value = evt.target.id.substring(8);
 
+    getPrice();
+
     const shopOrder = document.querySelector('.shop-page__order');
     toggleHidden(document.querySelector('.intro'), document.querySelector('.shop'), shopOrder);
 
@@ -666,7 +687,6 @@ const handlerSlopList = (evt) => {
 
     const form = shopOrder.querySelector('.custom-form');
     labelHidden(form);
-    toggleDelivery(shopOrder);
 
     const buttonOrder = shopOrder.querySelector('.button');
     buttonOrder.removeEventListener('click', handlerButtonOrder);
@@ -674,10 +694,24 @@ const handlerSlopList = (evt) => {
   }
 }
 
-
   /////////////////////////
  // Асинхронные Функции //
 /////////////////////////
+
+// Функция полученый цены товара и доставки
+const getPrice = () => {
+  // AJAX
+  $.get('/include/orderCost.php', 'prodID=' + $('#prodID').val())
+    .fail(function() {
+      alertOnce('Oшибка загруки данных'); // изменить
+    })
+    .done(function(data) {
+      const price = JSON.parse(data);
+      price.isDelivery = $('.shop-page__delivery--no').is(":hidden");
+      setOrderPrice(price);
+      toggleDelivery(price);
+    });
+}
 
  // Функция добавления заказа в DB
 const addOrder = () => {

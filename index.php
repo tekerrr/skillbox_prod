@@ -196,6 +196,11 @@
           <legend class="custom-form__title custom-form__title--comment">Комментарии к заказу</legend>
           <textarea class="custom-form__textarea" name="comment"></textarea>
         </fieldset>
+        <fieldset class="custom-form__group shop-page__comment">
+          <legend class="custom-form__title">Стоимость заказа: <span id="order_price"></span></legend>
+          <p>Товар: <span id="order_product_price"></span></p>
+          <p>Доставка: <span id="order_delivery_price"></span></p>
+        </fieldset>
         <button class="button" type="submit">Отправить заказ</button>
       </form>
     </div>
