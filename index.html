@@ -10,9 +10,6 @@
   <meta name="theme-color" content="#393939">
 
   <link rel="preload" href="img/intro/coats-2018.jpg" as="image">
-  <link rel="preload" href="fonts/opensans-400-normal.woff2" as="font">
-  <link rel="preload" href="fonts/roboto-400-normal.woff2" as="font">
-  <link rel="preload" href="fonts/roboto-700-normal.woff2" as="font">
 
   <link rel="icon" href="img/favicon.png">
   <link rel="stylesheet" href="css/style.min.css">
@@ -23,23 +20,11 @@
 </head>
 <body>
 <header class="page-header">
-  <a class="page-header__logo" href="#">
+  <a class="page-header__logo" href="">
     <img src="img/logo.svg" alt="Fashion">
   </a>
   <nav class="page-header__menu">
-    <ul class="main-menu main-menu--header">
-      <li>
-        <a class="main-menu__item" href="#">Главная</a>
-      </li>
-      <li>
-        <a class="main-menu__item" href="#">Новинки</a>
-      </li>
-      <li>
-        <a class="main-menu__item active">Sale</a>
-      </li>
-      <li>
-        <a class="main-menu__item" href="delivery.html">Доставка</a>
-      </li>
+    <ul class="main-menu main-menu--header">      
     </ul>
   </nav>
 </header>
@@ -47,7 +32,7 @@
   <header class="intro">
     <div class="intro__wrapper">
       <h1 class=" intro__title">COATS</h1>
-      <p class="intro__info">Collection 2018</p>
+      <p class="intro__info">Collection 2019</p>
     </div>
   </header>
   <section class="shop container">
@@ -57,19 +42,7 @@
         <b class="filter__title">Категории</b>
         <ul class="filter__list">
           <li>
-            <a class="filter__list-item active" href="#">Все</a>
-          </li>
-          <li>
-            <a class="filter__list-item" href="#">Женщины</a>
-          </li>
-          <li>
-            <a class="filter__list-item" href="#">Мужчины</a>
-          </li>
-          <li>
-            <a class="filter__list-item" href="#">Дети</a>
-          </li>
-          <li>
-            <a class="filter__list-item" href="#">Аксессуары</a>
+            <a class="filter__list-item" href="?cat=0" id="filterID__0">Все</a>
           </li>
         </ul>
       </div>
@@ -80,7 +53,7 @@
             <div class="range__line" aria-label="Range Line"></div>
             <div class="range__res">
               <span class="range__res-item min-price">350 руб.</span>
-              <span class="range__res-item max-price">32 000 руб.</span>
+              <span class="range__res-item max-price">32000 руб.</span>
             </div>
           </div>
         </div>
@@ -98,92 +71,29 @@
     <div class="shop__wrapper">
       <section class="shop__sorting">
         <div class="shop__sorting-item custom-form__select-wrapper">
-          <select class="custom-form__select" name="category">
+          <select class="custom-form__select" name="type">
             <option hidden="">Сортировка</option>
             <option value="price">По цене</option>
             <option value="name">По названию</option>
           </select>
         </div>
         <div class="shop__sorting-item custom-form__select-wrapper">
-          <select class="custom-form__select" name="prices">
+          <select class="custom-form__select" name="order">
             <option hidden="">Порядок</option>
-            <option value="all">По возрастанию</option>
-            <option value="woman">По убыванию</option>
+            <option value="asc">По возрастанию</option>
+            <option value="desc">По убыванию</option>
           </select>
         </div>
-        <p class="shop__sorting-res">Найдено <span class="res-sort">858</span> моделей</p>
+        <p class="shop__sorting-res">Найдено <span class="res-sort">858</span> <span id="ending">моделей</span></p>
       </section>
-      <section class="shop__list">
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-1.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-2.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-3.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-4.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-5.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-6.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-7.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-8.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
-        <article class="shop__item product" tabindex="0">
-          <div class="product__image">
-            <img src="img/products/product-9.jpg" alt="product-name">
-          </div>
-          <p class="product__name">Платье со складками</p>
-          <span class="product__price">2 999 руб.</span>
-        </article>
+      <section class="shop__list">        
       </section>
       <ul class="shop__paginator paginator">
         <li>
           <a class="paginator__item">1</a>
         </li>
         <li>
-          <a class="paginator__item" href="">2</a>
+          <a class="paginator__item" href="?page=2">2</a>
         </li>
       </ul>
     </div>
@@ -192,6 +102,7 @@
     <div class="shop-page__wrapper">
       <h2 class="h h--1">Оформление заказа</h2>
       <form action="#" method="post" class="custom-form js-order">
+        <input type="hidden" name="prodID" id="prodID" value="">
         <fieldset class="custom-form__group">
           <legend class="custom-form__title">Укажите свои личные данные</legend>
           <p class="custom-form__info">
@@ -211,11 +122,11 @@
               <p class="custom-form__input-label">Отчество</p>
             </label>
             <label class="custom-form__input-wrapper" for="phone">
-              <input id="phone" class="custom-form__input" type="tel" name="thirdName" required="">
+              <input id="phone" class="custom-form__input" type="tel" name="phone" required="">
               <p class="custom-form__input-label">Телефон <span class="req">*</span></p>
             </label>
             <label class="custom-form__input-wrapper" for="email">
-              <input id="email" class="custom-form__input" type="email" name="thirdName" required="">
+              <input id="email" class="custom-form__input" type="email" name="email" required="">
               <p class="custom-form__input-label">Почта <span class="req">*</span></p>
             </label>
           </div>
@@ -303,19 +214,7 @@
       <img src="img/logo--footer.svg" alt="Fashion">
     </a>
     <nav class="page-footer__menu">
-      <ul class="main-menu main-menu--footer">
-        <li>
-          <a class="main-menu__item" href="#">Главная</a>
-        </li>
-        <li>
-          <a class="main-menu__item" href="#">Новинки</a>
-        </li>
-        <li>
-          <a class="main-menu__item">Sale</a>
-        </li>
-        <li>
-          <a class="main-menu__item" href="delivery.html">Доставка</a>
-        </li>
+      <ul class="main-menu main-menu--footer">        
       </ul>
     </nav>
     <address class="page-footer__copyright">
@@ -323,5 +222,14 @@
     </address>
   </div>
 </footer>
+<template id="shop__item">
+  <article class="shop__item product" tabindex="0">
+    <div class="product__image">
+      <img src="img/products/product-1.jpg" alt="product-name">
+    </div>
+    <p class="product__name">Платье со складками</p>
+    <span class="product__price">2 999 руб.</span>
+  </article>  
+</template>
 </body>
 </html>
