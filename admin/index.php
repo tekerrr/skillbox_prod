@@ -9,30 +9,30 @@
 
   <meta name="theme-color" content="#393939">
 
-  <link rel="icon" href="../img/favicon.png">
-  <link rel="stylesheet" href="../css/style.min.css">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/css/style.min.css">
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="../js/scriptsAdmin.js" defer=""></script>
+  <script src="/js/scriptsAdmin.js" defer=""></script>
 </head>
 <body>
 <header class="page-header">
   <a class="page-header__logo" href="#">
-    <img src="../img/logo.svg" alt="Fashion">
+    <img src="/img/logo.svg" alt="Fashion">
   </a>
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-          <a class="main-menu__item" href="../index.php">Главная</a>
+          <a class="main-menu__item" href="/index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
+          <a class="main-menu__item" href="/index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
+          <a class="main-menu__item" href="/index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.php">Доставка</a>
+          <a class="main-menu__item" href="/delivery.php">Доставка</a>
         </li>
     </ul>
   </nav>
@@ -47,28 +47,28 @@
     <label class="custom-form__input-wrapper" for="email">
       <input type="password" id="password" class="custom-form__input" name="password" autocomplete="current-password">
       <p class="custom-form__input-label">Пароль <span class="req">*</span></p>
-    </label>    
+    </label>
     <button class="button" type="submit">Войти в личный кабинет</button>
   </form>
 </main>
 <footer class="page-footer">
   <div class="container">
     <a class="page-footer__logo" href="#">
-      <img src="../img/logo--footer.svg" alt="Fashion">
+      <img src="/img/logo--footer.svg" alt="Fashion">
     </a>
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="../index.php">Главная</a>
+          <a class="main-menu__item" href="/index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
+          <a class="main-menu__item" href="/index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
+          <a class="main-menu__item" href="/index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.php">Доставка</a>
+          <a class="main-menu__item" href="/delivery.php">Доставка</a>
         </li>
       </li>
       </ul>

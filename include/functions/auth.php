@@ -8,22 +8,18 @@ require_once(FOLDER_INCLUDE . '/functions/db.php');
  * Функция авторизациии
  * @return int UID
  */
-function login() : int {
+function getUID() : int {
 	$UID = 0;
-	if ($post['email'] === '' || $post['password'] === '') {
-		return $UID;
-	}
 
 	$connection = getConnection();
 	$login = mysqli_real_escape_string($connection, $_POST['email']);
-	$password = $_POST['password'];
 
-	$format = 'SELECT user_id, password_hash as hash FROM `%1$s` WHERE login=\'%2$s\' LIMIT 1';
+	$format = 'SELECT id, password_hash as hash FROM %1$s WHERE login = \'%2$s\' LIMIT 1';
 	$query = sprintf($format, DB_USERS_TABLE, $login);
 
 	if (($result = mysqli_query($connection, $query)) && ($row = mysqli_fetch_assoc($result))) {
-		if (password_verify($password, $row['hash'])) {
-			$UID = (int)$row['user_id'];
+		if (password_verify($_POST['password'], $row['hash'])) {
+			$UID = (int) $row['id'];
 		}
 	}
 	return $UID;
@@ -34,17 +30,15 @@ function login() : int {
  * @return array
  */
 function getUserRights() {
-	$connection = getConnection();
-
 	$groups = [];
 
-	$format = 'SELECT `name` FROM `%1$s` 
-	INNER JOIN `%2$s` ON `%1$s`.group_id = `%2$s`.group_id
-	WHERE user_id=%3$u';
-	$query = sprintf($format, DB_USER_GROUP_TABLE, DB_GROUPS_TABLE, (int)$_SESSION['UID']);
+	$format = 'SELECT `name` FROM %1$s INNER JOIN %2$s ON %1$s.group_id = %2$s.id WHERE user_id = %3$u';
+	$query = sprintf($format, DB_USER_GROUP_TABLE, DB_GROUPS_TABLE, (int) $_SESSION['UID']);
 
-	if (($result = mysqli_query($connection, $query)) && ($row = mysqli_fetch_assoc($result))) {
-		$groups[$row['name']] = 1; 
+	if ($result = mysqli_query(getConnection(), $query)) {
+		while ($row = mysqli_fetch_assoc($result)) {
+			$groups[$row['name']] = true;
+		}
 	}
 	return $groups;
 }
@@ -53,8 +47,7 @@ function getUserRights() {
  * Функция установки прав пользователя в его сессию
  */
 function setUserRightsToSession() {
-	$rights = getUserRights();	
-	$_SESSION['rights'] = $rights;
+	$_SESSION['rights'] = getUserRights();
 }
 
 /**
@@ -63,7 +56,7 @@ function setUserRightsToSession() {
  */
 function isUsersGroup(string ...$groups) : bool {
 	foreach ($groups as $group) {
-		if ($_SESSION['rights'][$group]) {
+		if (! empty($_SESSION['rights'][$group])) {
 			return true;
 		}
 	}
@@ -82,11 +75,11 @@ function startSession() {
 
 /**
  * Функция разавторизациии
- */ 
+ */
 function logout() {
 	session_destroy(); // Удаление сессии
 	setcookie('login', '', time() - 3600 * 24 * 30, '/'); // Удаление cookie login
 	unset($_SESSION);
 	unset($_COOKIE);
-	header('Location: ../admin/index.html');
+	header('Location: ' . URL_ADMIN_INDEX);
 }

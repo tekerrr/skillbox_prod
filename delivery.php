@@ -12,24 +12,24 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
 
   <meta name="theme-color" content="#393939">
 
-  <link rel="icon" href="img/favicon.png">
-  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/css/style.min.css">
 </head>
 <body>
 <header class="page-header">
   <a class="page-header__logo" href="#">
-    <img src="img/logo.svg" alt="Fashion">
+    <img src="/img/logo.svg" alt="Fashion">
   </a>
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-        <a class="main-menu__item" href="index.php">Главная</a>
+        <a class="main-menu__item" href="/index.php">Главная</a>
       </li>
       <li>
-        <a class="main-menu__item" href="index.php?new=1">Новинки</a>
+        <a class="main-menu__item" href="/index.php?new=1">Новинки</a>
       </li>
       <li>
-        <a class="main-menu__item" href="index.php?sale=1">Sale</a>
+        <a class="main-menu__item" href="/index.php?sale=1">Sale</a>
       </li>
       <li>
         <a class="main-menu__item active">Доставка</a>
@@ -57,12 +57,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
           Примерный срок доставки составит около 2-7 рабочих дней, в зависимости от адреса доставки.
         </p>
       </li>
-      <!-- <li>
-        <b class="page-delivery__item-title">В день покупки - 560 РУБ</b>
-        <p class="page-delivery__item-desc">
-          Доступна для жителей г. Москва в пределах МКАД. Заказы, оформленныес понедельника по пятницу до 14:00 будут доставлены в тот же день с 19:00до 23:00. Изменение адреса доставки после оформления заказа невозможно.
-        </p>
-      </li> -->
       <li>
         <b class="page-delivery__item-title">Доставка с примеркой перед покупкой по Москве - <?=DELIVERY_PRICE?> РУБ / БЕСПЛАТНО (ПРИ ВЫКУПЕ НА СУММУ ОТ <?=DELIVERY_FREE_LIMIT?> РУБ)</b>
         <p class="page-delivery__item-desc">
@@ -80,18 +74,18 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
 <footer class="page-footer">
   <div class="container">
     <a class="page-footer__logo" href="#">
-      <img src="img/logo--footer.svg" alt="Fashion">
+      <img src="/img/logo--footer.svg" alt="Fashion">
     </a>
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="index.php">Главная</a>
+          <a class="main-menu__item" href="/index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="index.php?new=1">Новинки</a>
+          <a class="main-menu__item" href="/index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="index.php?sale=1">Sale</a>
+          <a class="main-menu__item" href="/index.php?sale=1">Sale</a>
         </li>
         <li>
           <a class="main-menu__item">Доставка</a>

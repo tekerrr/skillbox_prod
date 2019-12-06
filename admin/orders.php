@@ -14,24 +14,24 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
 
   <meta name="theme-color" content="#393939">
 
-  <link rel="icon" href="../img/favicon.png">
-  <link rel="stylesheet" href="../css/style.min.css">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/css/style.min.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="../js/scriptsAdmin.js" defer=""></script>
+  <script src="/js/scriptsAdmin.js" defer=""></script>
 </head>
 <body>
 <header class="page-header">
   <a class="page-header__logo" href="#">
-    <img src="../img/logo.svg" alt="Fashion">
+    <img src="/img/logo.svg" alt="Fashion">
   </a>
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-        <a class="main-menu__item" href="../index.php">Главная</a>
+        <a class="main-menu__item" href="/index.php">Главная</a>
       </li>
       <li>
-        <a class="main-menu__item active" href="orders.php">Заказы</a>
-      </li>      
+        <a class="main-menu__item active" href="/admin/orders.php">Заказы</a>
+      </li>
       <li>
         <a class="main-menu__item" href="?login=out">Выйти</a>
       </li>
@@ -40,27 +40,27 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
 </header>
 <main class="page-order">
   <h1 class="h h--1">Список заказов</h1>
-  <ul class="page-order__list">    
+  <ul class="page-order__list">
   </ul>
 </main>
 <footer class="page-footer">
   <div class="container">
     <a class="page-footer__logo" href="#">
-      <img src="../img/logo--footer.svg" alt="Fashion">
+      <img src="/img/logo--footer.svg" alt="Fashion">
     </a>
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="../index.php">Главная</a>
+          <a class="main-menu__item" href="/index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
+          <a class="main-menu__item" href="/index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
+          <a class="main-menu__item" href="/index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.php">Доставка</a>
+          <a class="main-menu__item" href="/delivery.php">Доставка</a>
         </li>
       </ul>
     </nav>
@@ -127,7 +127,7 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
           <span class="order-item__info" id="comment">Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Вдали от всех живут они в буквенных домах на берегу.</span>
         </div>
       </div>
-    </li> 
+    </li>
 </template>
 </body>
 </html>
