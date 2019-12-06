@@ -124,11 +124,11 @@ const getMainMenuElement = (text, href) => {
 const createMainMenuByClass = (className) => {
 
   const indexElements = [
-    {text:'Главная', href:'index.html'},
-    {text:'Новинки', href:'index.html?new=1'},
-    {text:'Sale', href:'index.html?sale=1'}
+    {text:'Главная', href:'index.php'},
+    {text:'Новинки', href:'index.php?new=1'},
+    {text:'Sale', href:'index.php?sale=1'}
   ];
-  const deliveryElement = {text:'Доставка', href:'delivery.html'};
+  const deliveryElement = {text:'Доставка', href:'delivery.php'};
 
   const mainMenu = document.querySelector('.main-menu--' + className);
 
@@ -136,7 +136,7 @@ const createMainMenuByClass = (className) => {
   indexElements.forEach((element) => {
     const indexElement = getMainMenuElement(element.text, element.href);
     // Проверка на активный элемент согласно GET
-    if (className == 'header' && document.location.search === element.href.substr(10)) {
+    if (className == 'header' && document.location.search === element.href.substr(9)) {
       indexElement.querySelector('a').classList.add('active');
     }
 

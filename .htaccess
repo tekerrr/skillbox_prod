@@ -1,5 +1,5 @@
 <IfModule dir_module>
-    DirectoryIndex index.html
+    DirectoryIndex index.php
 </IfModule>
 
 # html как php

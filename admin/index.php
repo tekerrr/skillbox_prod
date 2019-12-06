@@ -23,16 +23,16 @@
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-          <a class="main-menu__item" href="../index.html">Главная</a>
+          <a class="main-menu__item" href="../index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.html?new=1">Новинки</a>
+          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.html?sale=1">Sale</a>
+          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.html">Доставка</a>
+          <a class="main-menu__item" href="../delivery.php">Доставка</a>
         </li>
     </ul>
   </nav>
@@ -59,16 +59,16 @@
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="../index.html">Главная</a>
+          <a class="main-menu__item" href="../index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.html?new=1">Новинки</a>
+          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.html?sale=1">Sale</a>
+          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.html">Доставка</a>
+          <a class="main-menu__item" href="../delivery.php">Доставка</a>
         </li>
       </li>
       </ul>
