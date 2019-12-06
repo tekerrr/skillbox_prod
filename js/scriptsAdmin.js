@@ -18,7 +18,7 @@ const fade = (element) => {
   element.classList.add('fade');
   setTimeout(() => {
     element.classList.remove('fade');
-  }, 1000);    
+  }, 1000);
 }
 
 // Функция сокрытия label формы input при потери фокуса при наличии введенного текста
@@ -57,7 +57,7 @@ const addError = (text) => {
     error = document.createElement('h2');
     error.classList.add('error');
     error.style.color = '#e45446';
-    document.querySelector('main').appendChild(error);          
+    document.querySelector('main').appendChild(error);
   }
   error.textContent = text;
   fade(error);
@@ -74,15 +74,14 @@ const addError = (text) => {
 // Функция авторизации
 const login = () => {
   // AJAX
-  $.post('../include/admin/login.php', $('.custom-form').serialize())
+  $.post('/include/admin/login.php', $('.custom-form').serialize())
     .fail(function() {
       alertOnce('Ошибка загрузки данных');
     })
     .done(function(data) {
-      console.log(data);
       var result = JSON.parse(data);
       if (result.success) {
-        document.location.href = 'orders.php';
+        document.location.href = '/admin/orders.php';
       } else {
         addError(result.error);
       }
@@ -143,11 +142,11 @@ const changeElementById = (parent, id, text) => {
 const getOrderListElement = (order, template) => {
   var card = template.cloneNode(true);
 
-  const status = card.querySelector('.order-item__info--no');    
-  status.id = 'orderID__' + order.order_id;
+  const status = card.querySelector('.order-item__info--no');
+  status.id = 'orderID__' + order.id;
 
   var fullName = order.last_name + ' ' + order.first_name;
-  var delivery = '';
+  var delivery = 'Самовывоз';
   var cash = 'Банковской картой';
   var address = 'Пункт самовывоза'
 
@@ -159,11 +158,11 @@ const getOrderListElement = (order, template) => {
     address = order.city + ', ' + order.street + ', ' + order.house + ', ' + order.apartment;
   }
   if (order.cash !== '0') {
-    cash = 'Наличными';    
+    cash = 'Наличными';
   }
 
   var elements = [
-    {name: 'order_id',    text: order.order_id},
+    {name: 'order_id',    text: order.id},
     {name: 'cost',        text: order.cost},
     {name: 'product_id',  text: order.product_id},
     {name: 'create_time', text: order.create_time},
@@ -184,7 +183,7 @@ const getOrderListElement = (order, template) => {
     status.classList.remove('order-item__info--no');
     status.classList.add('order-item__info--yes');
   } else {
-    card.classList.add('order-item--active');    
+    card.classList.add('order-item--active');
   }
 
   return card;
@@ -196,12 +195,10 @@ const createOrderList = (orders) => {
   const template = document.querySelector('#page-order__list').content.querySelector('.page-order__item');
 
   // заполнение списка
-  if (orders !== null) {
-    orders.forEach((order) => {
-      var element = getOrderListElement(order, template);
-      orderList.appendChild(element);
-    });
-  }
+  orders.forEach((order) => {
+    var element = getOrderListElement(order, template);
+    orderList.appendChild(element);
+  });
 }
 
 // Функция показа подробной информации о заказе
@@ -234,11 +231,11 @@ const addPageOrderListener = () => {
 
   pageOrderList.addEventListener('click', evt => {
     if (evt.target.classList && evt.target.classList.contains('order-item__toggle')) {
-      showOrderFullCard(evt);      
+      showOrderFullCard(evt);
     }
 
     if (evt.target.classList && evt.target.classList.contains('order-item__btn')) {
-      const status = evt.target.previousElementSibling;      
+      const status = evt.target.previousElementSibling;
       toggleStatusOrderDB(status);
     }
   });
@@ -272,7 +269,7 @@ const requestOrderList = () => {
     })
     .done(function(data) {
       const orders = JSON.parse(data);
-      createOrderList(orders);      
+      createOrderList(orders);
     });
 }
 
@@ -293,7 +290,7 @@ const toggleStatusOrderDB = (status) => {
     .done(function(data) {
       const result = JSON.parse(data);
       if (result.success) {
-        toggleStatusOrder(status);     
+        toggleStatusOrder(status);
       }
     });
 }
@@ -332,7 +329,7 @@ const setLocation = (curLoc) => {
   } catch(e) {}
 
   location.hash = '#' + curLoc;
-}  
+}
 
 // Функция изменения GET-url (основа https://stackoverflow.com/questions/486896/)
 const insertParamMultiple = (obj) => {
@@ -359,8 +356,8 @@ const insertParamMultiple = (obj) => {
   if (!kvp[0]) {
     kvp.shift();
   }
-  setLocation('?' + kvp.join('&'));      
-} 
+  setLocation('?' + kvp.join('&'));
+}
 
 // Фукнция возвращает элемент для списка товаров
 const getProductListElement = (product, template) => {
@@ -368,7 +365,7 @@ const getProductListElement = (product, template) => {
   card.id = 'prodID__' + product.id;
 
     var new_flag = 'Нет';
-    if (product.new_flag) {
+    if (product.new_flag === '1') {
       new_flag = 'Да';
     }
 
@@ -397,12 +394,10 @@ const refreshProductList = (products) => {
   clearChild(productList);
 
   // заполнение списка
-  if (products !== null) {
-    products.forEach((product) => {
-      var element = getProductListElement(product, template);        
-      productList.appendChild(element);
-    });
-  }
+  products.forEach((product) => {
+    var element = getProductListElement(product, template);
+    productList.appendChild(element);
+  });
 }
 
 // Фукнция возвращает элемент paginator'а
@@ -445,7 +440,7 @@ const refreshPaginator = (pages, currentPage) => {
   if (endPage > pages) {
     endPage = pages;
   }
-  
+
   for (let i = startPage; i <= endPage; i++) {
     var element = getPaginatorElement(i, currentPage ,pages)
     paginator.appendChild(element);
@@ -459,14 +454,13 @@ const refreshPaginator = (pages, currentPage) => {
 // Функция запроса списка товаров из DB
 const requestProductList = () => {
   // AJAX
-  $.get('/include/admin/productListWithCategory.php', window.location.search.substring(1) + '&type=id')
+  $.get('/include/admin/productListWithCategory.php', window.location.search.substring(1) + '&type=id&order=desc')
     .fail(function() {
       alertOnce('Ошибка загрузки данных'); // изменить
     })
     .done(function(data) {
-      console.log(data);
       var products = JSON.parse(data);
-      refreshProductList(products);      
+      refreshProductList(products);
     });
 }
 
@@ -491,7 +485,6 @@ const deactivateProduct = (target) => {
       alertOnce('Oшибка загруки данных'); // изменить
     })
     .done(function(data) {
-      console.log(data);
       const result = JSON.parse(data);
       if (result.success) {
         target.parentElement.removeChild(target);
@@ -508,7 +501,7 @@ const pageProducts = document.querySelector('.page-products');
 if (pageProducts) {
   requestProductList();
   requestProductCounter();
-  
+
   const productsList = pageProducts.querySelector('.page-products__list')
   productsList.addEventListener('click', evt => {
     const target = evt.target;
@@ -556,20 +549,18 @@ const checkList = (list, btn) => {
 const getCategoryListElement = (filter) => {
   const element = document.createElement('option');
   element.value = filter.id;
-  element.textContent = filter.name;  
+  element.textContent = filter.name;
   return element;
 }
 
 // Функция создания (верстки) списка категорий
 const createCategotyList = (filters) => {
-  if (filters !== null) {
-    const categoryList = document.querySelector('.custom-form__select');
+  const categoryList = document.querySelector('.custom-form__select');
 
-    filters.forEach((filter) => {
-      var element = getCategoryListElement(filter);
-      categoryList.appendChild(element);
-    });
-  }
+  filters.forEach((filter) => {
+    var element = getCategoryListElement(filter);
+    categoryList.appendChild(element);
+  });
 }
 
  // Функция перевода файла по сслыке в base64. Источник http://qaru.site/questions/3994/
@@ -619,7 +610,7 @@ const setCheckboxes = (checkboxes) => {
   const newCheckbox = document.querySelector('#new');
   const saleCheckbox = document.querySelector('#sale');
   const activeCheckbox = document.querySelector('#active');
-  
+
   newCheckbox.checked = (checkboxes.new == '1');
   saleCheckbox.checked = (checkboxes.sale == '1');
   activeCheckbox.checked = (checkboxes.active == '1');
@@ -696,10 +687,9 @@ const requestProduct = (id) => {
       alertOnce('Ошибка загрузки данных');
     })
     .done(function(data) {
-      console.log(data);
       var product = JSON.parse(data);
-      if (product) {
-        setProductForms(product);        
+      if (!product.error) {
+        setProductForms(product);
       }
     });
 }
@@ -712,14 +702,11 @@ const addProduct = () => {
   // AJAX
   $.post('/include/admin/addProduct.php', $post)
     .fail(function() {
-      // window.scroll(0, 0);
       alertOnce('Oшибка загруки данных'); // изменить
     })
     .done(function(data) {
-      console.log(data);
-      // window.scroll(0, 0);
       var result = JSON.parse(data);
-      if (result.success === 1) {
+      if (result.success) {
         const form = document.querySelector('.custom-form');
         const popupEnd = document.querySelector('.page-add__popup-end');
 
@@ -778,7 +765,7 @@ if (addList) {
   });
 
   // Товар успешно добавлен
-  const button = document.querySelector('.button');        
+  const button = document.querySelector('.button');
   button.addEventListener('click', (evt) => {
     evt.preventDefault();
 
@@ -787,7 +774,7 @@ if (addList) {
     const image = form.querySelector('.add-list__item--active');
 
     if (name.value !== '' && price.value !== '' && image) {
-      addProduct();      
+      addProduct();
     } else {
       addError('Заполните все обязательные поля!');
     }

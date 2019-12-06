@@ -9,22 +9,22 @@
 
   <meta name="theme-color" content="#393939">
 
-  <link rel="preload" href="img/intro/coats-2018.jpg" as="image">
+  <link rel="preload" href="/img/intro/coats-2018.jpg" as="image">
 
-  <link rel="icon" href="img/favicon.png">
-  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/css/style.min.css">
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="js/scripts.js" defer=""></script>
+  <script src="/js/scripts.js" defer=""></script>
 </head>
 <body>
 <header class="page-header">
   <a class="page-header__logo" href="">
-    <img src="img/logo.svg" alt="Fashion">
+    <img src="/img/logo.svg" alt="Fashion">
   </a>
   <nav class="page-header__menu">
-    <ul class="main-menu main-menu--header">      
+    <ul class="main-menu main-menu--header">
     </ul>
   </nav>
 </header>
@@ -86,7 +86,7 @@
         </div>
         <p class="shop__sorting-res">Найдено <span class="res-sort">858</span> <span id="ending">моделей</span></p>
       </section>
-      <section class="shop__list">        
+      <section class="shop__list">
       </section>
       <ul class="shop__paginator paginator">
         <li>
@@ -211,10 +211,10 @@
 <footer class="page-footer">
   <div class="container">
     <a class="page-footer__logo" href="#">
-      <img src="img/logo--footer.svg" alt="Fashion">
+      <img src="/img/logo--footer.svg" alt="Fashion">
     </a>
     <nav class="page-footer__menu">
-      <ul class="main-menu main-menu--footer">        
+      <ul class="main-menu main-menu--footer">
       </ul>
     </nav>
     <address class="page-footer__copyright">
@@ -225,11 +225,11 @@
 <template id="shop__item">
   <article class="shop__item product" tabindex="0">
     <div class="product__image">
-      <img src="img/products/product-1.jpg" alt="product-name">
+      <img src="/img/products/product-1.jpg" alt="product-name">
     </div>
     <p class="product__name">Платье со складками</p>
     <span class="product__price">2 999 руб.</span>
-  </article>  
+  </article>
 </template>
 </body>
 </html>

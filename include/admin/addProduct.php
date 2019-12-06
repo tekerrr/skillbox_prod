@@ -2,5 +2,6 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . '/constants.php');
 require_once(FOLDER_INCLUDE . '/functions/db.php');
 
-$result = addProduct();
-echo json_encode($result);
+$connection = getConnection();
+echo json_encode(addProduct());
+mysqli_close($connection);

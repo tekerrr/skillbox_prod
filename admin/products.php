@@ -15,27 +15,27 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
 
   <meta name="theme-color" content="#393939">
 
-  <link rel="icon" href="../img/favicon.png">
-  <link rel="stylesheet" href="../css/style.min.css">
+  <link rel="icon" href="/img/favicon.png">
+  <link rel="stylesheet" href="/css/style.min.css">
 
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="../js/scriptsAdmin.js" defer=""></script>
+  <script src="/js/scriptsAdmin.js" defer=""></script>
 </head>
 <body>
 <header class="page-header">
   <a class="page-header__logo" href="#">
-    <img src="../img/logo.svg" alt="Fashion">
+    <img src="/img/logo.svg" alt="Fashion">
   </a>
   <nav class="page-header__menu">
     <ul class="main-menu main-menu--header">
       <li>
-        <a class="main-menu__item" href="../index.php">Главная</a>
+        <a class="main-menu__item" href="/index.php">Главная</a>
       </li>
       <li>
-        <a class="main-menu__item" href="orders.php">Заказы</a>
+        <a class="main-menu__item" href="/admin/orders.php">Заказы</a>
       </li>
       <li>
-        <a class="main-menu__item active" href="products.php">Товары</a>
+        <a class="main-menu__item active" href="/admin/products.php">Товары</a>
       </li>
       <li>
         <a class="main-menu__item" href="?login=out">Выйти</a>
@@ -53,9 +53,9 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
     <span class="page-products__header-field">Категория</span>
     <span class="page-products__header-field">Новинка</span>
   </div>
-  <ul class="page-products__list">    
+  <ul class="page-products__list">
   </ul>
-  <section class="shop__list">        
+  <section class="shop__list">
   </section>
   <ul class="shop__paginator paginator">
     <li>
@@ -69,21 +69,21 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
 <footer class="page-footer">
   <div class="container">
     <a class="page-footer__logo" href="#">
-      <img src="../img/logo--footer.svg" alt="Fashion">
+      <img src="/img/logo--footer.svg" alt="Fashion">
     </a>
     <nav class="page-footer__menu">
       <ul class="main-menu main-menu--footer">
         <li>
-          <a class="main-menu__item" href="../index.php">Главная</a>
+          <a class="main-menu__item" href="/index.php">Главная</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?new=1">Новинки</a>
+          <a class="main-menu__item" href="/index.php?new=1">Новинки</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../index.php?sale=1">Sale</a>
+          <a class="main-menu__item" href="/index.php?sale=1">Sale</a>
         </li>
         <li>
-          <a class="main-menu__item" href="../delivery.php">Доставка</a>
+          <a class="main-menu__item" href="/delivery.php">Доставка</a>
         </li>
       </ul>
     </nav>
@@ -100,7 +100,7 @@ require_once(FOLDER_INCLUDE . '/admin/auth.php');
     <span class="product-item__field" id="new_flag">Да</span>
     <a href="add.php" class="product-item__edit" aria-label="Редактировать"></a>
     <button class="product-item__delete"></button>
-  </li> 
+  </li>
 </template>
 </footer>
 </body>

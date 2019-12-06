@@ -18,7 +18,7 @@ const fade = (element) => {
   element.classList.add('fade');
   setTimeout(() => {
     element.classList.remove('fade');
-  }, 1000);    
+  }, 1000);
 }
 
   ////////////////////////////////
@@ -44,7 +44,7 @@ const setLocation = (curLoc) => {
   } catch(e) {}
 
   location.hash = '#' + curLoc;
-}  
+}
 
 // Функция изменения GET-url (основа https://stackoverflow.com/questions/486896/)
 const insertParamMultiple = (obj) => {
@@ -71,8 +71,8 @@ const insertParamMultiple = (obj) => {
   if (!kvp[0]) {
     kvp.shift();
   }
-  setLocation('?' + kvp.join('&'));      
-} 
+  setLocation('?' + kvp.join('&'));
+}
 
 // Функция получения значения GET запроса
 const getRequestValue = (key) => {
@@ -100,9 +100,9 @@ const setActiveMainMenu = (elementTextContent) => {
   const mainMenu = document.querySelectorAll('.main-menu--header .main-menu__item');
   mainMenu.forEach((element) => {
     if (element.textContent == elementTextContent) {
-      element.classList.add('active');        
+      element.classList.add('active');
     } else {
-      element.classList.remove('active');        
+      element.classList.remove('active');
     }
   });
 }
@@ -124,11 +124,11 @@ const getMainMenuElement = (text, href) => {
 const createMainMenuByClass = (className) => {
 
   const indexElements = [
-    {text:'Главная', href:'index.php'},
-    {text:'Новинки', href:'index.php?new=1'},
-    {text:'Sale', href:'index.php?sale=1'}
+    {text:'Главная', href:'/index.php'},
+    {text:'Новинки', href:'/index.php?new=1'},
+    {text:'Sale', href:'/index.php?sale=1'}
   ];
-  const deliveryElement = {text:'Доставка', href:'delivery.php'};
+  const deliveryElement = {text:'Доставка', href:'/delivery.php'};
 
   const mainMenu = document.querySelector('.main-menu--' + className);
 
@@ -136,7 +136,7 @@ const createMainMenuByClass = (className) => {
   indexElements.forEach((element) => {
     const indexElement = getMainMenuElement(element.text, element.href);
     // Проверка на активный элемент согласно GET
-    if (className == 'header' && document.location.search === element.href.substr(9)) {
+    if (className == 'header' && document.location.search === element.href.substr(10)) {
       indexElement.querySelector('a').classList.add('active');
     }
 
@@ -186,7 +186,7 @@ const getCategoryListElement = (filter) => {
   const element = document.createElement('li');
   const a = document.createElement('a');
 
-  a.classList.add('filter__list-item');    
+  a.classList.add('filter__list-item');
   a.id = 'filterID__' + filter.id;
   a.href = '?cat=' + filter.id;
   a.textContent = filter.name;
@@ -197,16 +197,13 @@ const getCategoryListElement = (filter) => {
 
 // Функция создания (верстки) списка категорий
 const createCategotyList = (filters) => {
-  if (filters !== null) {
     const categoryList = document.querySelector('.filter__list');
 
     filters.forEach((filter) => {
       var element = getCategoryListElement(filter);
       categoryList.appendChild(element);
     });
-
     setActiveCategory();
-  }
 }
 
 //
@@ -219,28 +216,8 @@ const refreshSlidersLabels = () => {
   $('.max-price').text($('.range__line').slider('values', 1).toLocaleString('ru') + ' руб.');
 }
 
-// Функция проверки новых значений слайдера на необходимость предельных значений (min, max)
-const checkNewSliderRange = (newSlider) => {
-  if (document.querySelector('.range__line').firstChild) {
-    const oldSlider = {
-      min: $('.range__line').slider('option', 'min'),
-      max: $('.range__line').slider('option', 'max'),
-      lo: $('.range__line').slider('values', 0),
-      hi: $('.range__line').slider('values', 1)
-    };
-
-    if (newSlider.min < oldSlider.min && oldSlider.lo == oldSlider.min) {
-      newSlider.lo = newSlider.min;
-    }
-    if (newSlider.max > oldSlider.max && oldSlider.hi == oldSlider.max) {
-      newSlider.hi = newSlider.max;
-    }
-  }
-}
-
 // Функция задания слайдера
 const setSlider = (slider) => {
-  checkNewSliderRange(slider);
   $('.range__line').slider({
     min: slider.min,
     max: slider.max,
@@ -256,7 +233,7 @@ const setSlider = (slider) => {
 const setCheckboxes = (checkboxes) => {
   const newCheckbox = document.querySelector('#new');
   const saleCheckbox = document.querySelector('#sale');
-  
+
   newCheckbox.checked = (checkboxes.new == '1');
   saleCheckbox.checked = (checkboxes.sale == '1');
 }
@@ -267,13 +244,13 @@ const setSortFilters = (sortFilters) => {
   const orderSelector = document.querySelector('select[name="order"]');
 
   if (sortFilters.type) {
-    typeSelector.value = sortFilters.type;      
+    typeSelector.value = sortFilters.type;
   } else {
     typeSelector.selectedIndex = 0;
   }
 
   if (sortFilters.order) {
-    orderSelector.value = sortFilters.order;      
+    orderSelector.value = sortFilters.order;
   } else {
     orderSelector.selectedIndex = 0;
   }
@@ -288,7 +265,7 @@ const getProductListElement = (product, template) => {
   var element = template.cloneNode(true);
   element.id = 'prodID__' + product.id;
 
-  var image = element.querySelector('.product__image').children[0];      
+  var image = element.querySelector('.product__image').children[0];
   image.src = product.image;
   image.alt = product.name;
 
@@ -310,12 +287,10 @@ const refreshProductList = (products) => {
   clearChild(productList);
 
   // заполнение списка
-  if (products !== null) {
-    products.forEach((product) => {
-      var element = getProductListElement(product, template);        
-      productList.appendChild(element);
-    });
-  }
+  products.forEach((product) => {
+    var element = getProductListElement(product, template);
+    productList.appendChild(element);
+  });
 }
 
 //
@@ -347,7 +322,7 @@ const getPaginatorElement = (page, currentPage ,pages) => {
 const refreshProductCounter = (count, word) => {
   $('.res-sort').text(count);
   $('#ending').text(word);
-} 
+}
 
 // Функция создания кнопок страниц навигации
 const refreshPaginator = (pages, currentPage) => {
@@ -365,7 +340,7 @@ const refreshPaginator = (pages, currentPage) => {
   if (endPage > pages) {
     endPage = pages;
   }
-  
+
   for (let i = startPage; i <= endPage; i++) {
     var element = getPaginatorElement(i, currentPage ,pages)
     paginator.appendChild(element);
@@ -374,7 +349,7 @@ const refreshPaginator = (pages, currentPage) => {
 
 //
 // Функции обновления страницы в соответсвии с GET-url
-// 
+//
 
 // Функция задания фильтров в соответсвии с GET;
 const setFilters = () => {
@@ -440,7 +415,6 @@ const requestSlider = () => {
       alertOnce('Ошибка загрузки данных');
     })
     .done(function(data) {
-      console.log(data);
       var slider = JSON.parse(data);
       setSlider(slider);
     });
@@ -455,7 +429,7 @@ const requestProductList = () => {
     })
     .done(function(data) {
       var products = JSON.parse(data);
-      refreshProductList(products);      
+      refreshProductList(products);
     });
 }
 
@@ -496,11 +470,17 @@ categoryWrapper.addEventListener('click', evt => {
       if (category.classList.contains('active')) {
         category.classList.remove('active');
       }
-    });    
+    });
     category.classList.add('active');
 
-    setLocation(category.href);
-    refreshPage();      
+    const mainMenuHref = document.querySelector('.main-menu__item.active').href.split('?');
+    var get = category.href;
+    if (mainMenuHref[1]) {
+      get += '&' + mainMenuHref[1];
+    }
+    setLocation(get);
+
+    refreshPage();
   }
 });
 
@@ -512,9 +492,19 @@ const filterForm = document.querySelector('.shop__filter form');
 filterForm.addEventListener('submit', (evt) => {
   evt.preventDefault();
 
+
+  var min = filterForm.querySelector('.min-price').textContent.slice(0, -5).replace(/\s/g, '');
+  var max = filterForm.querySelector('.max-price').textContent.slice(0, -5).replace(/\s/g, '');
+  if ($('.range__line').slider('option', 'min') === $('.range__line').slider('values', 0)) {
+    min = 'min';
+  }
+  if ($('.range__line').slider('option', 'max') === $('.range__line').slider('values', 1)) {
+    max = 'max';
+  }
+
   const get = {
-    min: filterForm.querySelector('.min-price').textContent.slice(0, -5).replace(/\s/g, ''),
-    max: filterForm.querySelector('.max-price').textContent.slice(0, -5).replace(/\s/g, ''),
+    min: min,
+    max: max,
     new: Number(filterForm.querySelector('#new').checked),
     sale: Number(filterForm.querySelector('#sale').checked)
   };
@@ -527,13 +517,13 @@ filterForm.addEventListener('submit', (evt) => {
  // 3.2. Установка обработчика на сортировку
 const typeSelector = document.querySelector('select[name="type"]');
 typeSelector.addEventListener('change', () => {
-  insertParamMultiple({type:typeSelector.value});    
+  insertParamMultiple({type:typeSelector.value});
   refreshProducts();
 });
 
 const orderSelector = document.querySelector('select[name="order"]');
 orderSelector.addEventListener('change', () => {
-  insertParamMultiple({order:orderSelector.value});    
+  insertParamMultiple({order:orderSelector.value});
   refreshProducts();
 });
 
@@ -579,7 +569,7 @@ const labelHidden = (form) => {
 // Функция вывода заглушки после удачного оформления заказа
 const addOrderSucсess = () => {
   const shopOrder = document.querySelector('.shop-page__order');
-  const popupEnd = document.querySelector('.shop-page__popup-end');    
+  const popupEnd = document.querySelector('.shop-page__popup-end');
   toggleHidden(shopOrder, popupEnd);
   fade(popupEnd);
 
@@ -617,7 +607,7 @@ const handlerDelivery = (evt) => {
 
 // Функция переключателя способа доставки (radio-button)
 const toggleDelivery = (elem) => {
-  const delivery = elem.querySelector('.js-radio');  
+  const delivery = elem.querySelector('.js-radio');
 
   delivery.removeEventListener('change',handlerDelivery);
   delivery.addEventListener('change',handlerDelivery);
@@ -698,11 +688,10 @@ const addOrder = () => {
       alertOnce('Oшибка загруки данных'); // изменить
     })
     .done(function(data) {
-      console.log(data);
       window.scroll(0, 0);
       var result = JSON.parse(data);
-      if (result.success === 1) {
-        addOrderSucсess();        
+      if (result.success) {
+        addOrderSucсess();
       }
     });
 }
